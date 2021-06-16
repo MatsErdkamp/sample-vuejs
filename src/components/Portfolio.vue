@@ -212,7 +212,7 @@ export default {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMap.enabled = true;
-    // renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     camera.position.setZ(30);
 
@@ -257,11 +257,18 @@ export default {
           newFrame.position.x =
             planeWidthAtDistance - planeWidthAtDistance / 4 + 2;
           scene.add(newFrame);
-          var newFrame2 = frameObject.clone();
-          newFrame2.position.x =
-            planeWidthAtDistance * 2 - planeWidthAtDistance / 4 + 2;
-          scene.add(newFrame2);
-
+          // var newFrame2 = frameObject.clone();
+          // newFrame2.position.x =
+          //   planeWidthAtDistance * 2 - planeWidthAtDistance / 4 + 2;
+          // scene.add(newFrame2);
+          var newFrame3 = frameObject.clone();
+          newFrame3.position.x =
+            planeWidthAtDistance * 3 - planeWidthAtDistance / 4 + 2;
+          scene.add(newFrame3);
+          var newFrame4 = frameObject.clone();
+          newFrame4.position.x =
+            planeWidthAtDistance * 4 - planeWidthAtDistance / 4 + 2;
+          scene.add(newFrame4);
           var newFrame5 = frameObject.clone();
           newFrame5.position.x =
             planeWidthAtDistance * 5 - planeWidthAtDistance / 4 + 2;
@@ -274,14 +281,47 @@ export default {
       );
     });
 
-    const tickergeometry = new THREE.BoxGeometry(15, 30, 15);
-    const tickermaterial = new THREE.MeshStandardMaterial({ color: 0x808080 });
+    //SPEAKER
+    const speakergeometry = new THREE.BoxGeometry(10, 30, 10);
+    const speakermaterial = new THREE.MeshPhongMaterial({ color: 0xd6d6d6 });
+    const speakermaterial2 = new THREE.MeshPhongMaterial({
+      color: 0x875632,
+      reflectivity: 0.1,
+      shininess: 16
+    });
 
-    const tickerPillar = new THREE.Mesh(tickergeometry, tickermaterial);
-    tickerPillar.position.x =
-      planeWidthAtDistance * 4 - planeWidthAtDistance / 4 + 2;
-    tickerPillar.position.y = -20;
-    scene.add(tickerPillar);
+    const speakerPillar = new THREE.Mesh(speakergeometry, speakermaterial);
+    speakerPillar.position.x =
+      planeWidthAtDistance * 2 - planeWidthAtDistance / 4 + 10;
+    speakerPillar.position.y = -20;
+    speakerPillar.position.z = 10;
+    scene.add(speakerPillar);
+
+    var speakerLoader = new OBJLoader();
+
+    speakerLoader.load(
+      "./speaker/speaker3.obj",
+      function(object) {
+        object.scale.set(10, 10, 10);
+        object.rotation.set(0, 5, 0);
+        object.position.x =
+          planeWidthAtDistance * 2 - planeWidthAtDistance / 4 + 10;
+        object.position.y = -14;
+        object.position.z = 10;
+
+        object.traverse(function(child) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+          child.material = speakermaterial2;
+        });
+
+        scene.add(object);
+      },
+      function(xhr) {},
+      function(error) {
+        console.log(error);
+      }
+    );
 
     var texture, material, picturePlane;
 
@@ -300,6 +340,28 @@ export default {
 
     scene.add(picturePlane);
 
+    //audio
+    var textureAudio, materialAudio, pictureAudio;
+
+    textureAudio = new THREE.TextureLoader().load("./audio.jpg");
+
+    materialAudio = new THREE.MeshPhongMaterial({
+      map: textureAudio,
+      reflectivity: 0.1,
+      shininess: 50
+    });
+    pictureAudio = new THREE.Mesh(
+      new THREE.PlaneGeometry(25, 25),
+      materialAudio
+    );
+    pictureAudio.material.side = THREE.DoubleSide;
+    pictureAudio.position.x =
+      planeWidthAtDistance * 3 - planeWidthAtDistance / 4 + 1;
+    pictureAudio.position.y = 3;
+    pictureAudio.position.z = 0.6;
+
+    scene.add(pictureAudio);
+
     //BYCLMC
     var textureByclmc, materialByclmc, pictureByclmc;
 
@@ -310,14 +372,17 @@ export default {
       reflectivity: 0.1,
       shininess: 50
     });
-    pictureByclmc = new THREE.Mesh(new THREE.PlaneGeometry(25, 25), materialByclmc);
+    pictureByclmc = new THREE.Mesh(
+      new THREE.PlaneGeometry(25, 25),
+      materialByclmc
+    );
     pictureByclmc.material.side = THREE.DoubleSide;
-    pictureByclmc.position.x = planeWidthAtDistance * 5 - planeWidthAtDistance / 4 + 1;
+    pictureByclmc.position.x =
+      planeWidthAtDistance * 5 - planeWidthAtDistance / 4 + 1;
     pictureByclmc.position.y = 3;
     pictureByclmc.position.z = 0.6;
 
     scene.add(pictureByclmc);
-
 
     // ALBUM PROFESSIONAL IDENTITY
     var texture2, material2, picturePlane2;
@@ -357,8 +422,8 @@ export default {
     light.castShadow = true; // default false
 
     //Set up shadow properties for the light
-    light.shadow.mapSize.width = 512; // default
-    light.shadow.mapSize.height = 512; // default
+    light.shadow.mapSize.width = 1024; // default
+    light.shadow.mapSize.height = 1024; // default
     scene.add(light);
 
     var light2 = light.clone();
@@ -562,7 +627,7 @@ export default {
   position: fixed;
   width: 100%;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.6);
   height: 5vh;
   z-index: 100;
   display: flex;
