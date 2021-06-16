@@ -172,8 +172,8 @@ export default {
       this.sectionTransition = true;
       this.sectionLocationPrevious = this.camera.position.x;
       this.sectionDelta = Math.abs(this.currentSectionIndex - index);
-      var hue = 180 + index * 15;
-      var hueOld = 180 + this.currentSectionIndex * 15;
+      var hue = 220 + index * 15;
+      var hueOld = 220 + this.currentSectionIndex * 15;
       console.log(hue, hueOld);
       this.planeColor = new THREE.Color("hsl(" + hueOld + ", 20%, 20%)");
       var newColorPlane = new THREE.Color("hsl(" + hue + ", 20%, 20%)");
@@ -480,7 +480,7 @@ export default {
       "./stuccoNormal.jpg"
     );
 
-    this.planeColor = new THREE.Color("hsl(" + 180 + ", 20%, 20%)");
+    this.planeColor = new THREE.Color("hsl(" + 220 + ", 20%, 20%)");
 
     texturePlaneNormal.wrapS = THREE.RepeatWrapping;
     texturePlaneNormal.wrapT = THREE.RepeatWrapping;
