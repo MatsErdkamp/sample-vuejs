@@ -12,7 +12,7 @@
           @click="moveToSection(index)"
         >
           <div v-if="index == 0">Home</div>
-          <div v-else :class="{ spacing: index == 3 || index == 7 }">
+          <div v-else :class="{ spacing: index == 3 || index == 8 }">
             {{ tab["title"] }}
           </div>
         </div>
@@ -104,6 +104,22 @@ const objectSeven = {
 };
 
 const objectEight = {
+  title: "Other Projects",
+  text:
+    "After graduating from high school, I did not only apply for Industrial Design. I also applied for Computer Science at the TU/e. When I tell people about this, they aren’t surprised in the slightest. Design projects closely related to Computer Science have been prevalent throughout all three years of my bachelor’s curriculum. Looking back, I am glad that I ultimately chose for Industrial Design. The creative freedom and self-directed learning possibilities within this study have been a great fit for me, and have played a huge role in my personal development.",
+  text_2:
+    "Funnily enough, I am once again facing the same dilemma I faced when I was fresh out of high school. Once again am I torn between Industrial Design and Computer Science (more specifically, Artificial Intelligence). I have always tried to utilize the best of both worlds in my projects, and my future vision very much combines design with A.I. systems. The world of Industrial Design seems to be waking up to artificial intelligence however, so mastering in Industrial Design with a focus on Artificial Intelligence might be the best fit for me, since that would still give me the creative freedom I valued so much during this bachelor. I am looking forward to the next steps in my design career, and I am excited to see how the applications of A.I in design are going to evolve in the future."
+};
+
+const objectNine = {
+  title: "Personal Development",
+  text:
+    "After graduating from high school, I did not only apply for Industrial Design. I also applied for Computer Science at the TU/e. When I tell people about this, they aren’t surprised in the slightest. Design projects closely related to Computer Science have been prevalent throughout all three years of my bachelor’s curriculum. Looking back, I am glad that I ultimately chose for Industrial Design. The creative freedom and self-directed learning possibilities within this study have been a great fit for me, and have played a huge role in my personal development.",
+  text_2:
+    "Funnily enough, I am once again facing the same dilemma I faced when I was fresh out of high school. Once again am I torn between Industrial Design and Computer Science (more specifically, Artificial Intelligence). I have always tried to utilize the best of both worlds in my projects, and my future vision very much combines design with A.I. systems. The world of Industrial Design seems to be waking up to artificial intelligence however, so mastering in Industrial Design with a focus on Artificial Intelligence might be the best fit for me, since that would still give me the creative freedom I valued so much during this bachelor. I am looking forward to the next steps in my design career, and I am excited to see how the applications of A.I in design are going to evolve in the future."
+};
+
+const objectTen = {
   title: "Future",
   text:
     "After graduating from high school, I did not only apply for Industrial Design. I also applied for Computer Science at the TU/e. When I tell people about this, they aren’t surprised in the slightest. Design projects closely related to Computer Science have been prevalent throughout all three years of my bachelor’s curriculum. Looking back, I am glad that I ultimately chose for Industrial Design. The creative freedom and self-directed learning possibilities within this study have been a great fit for me, and have played a huge role in my personal development.",
@@ -119,6 +135,8 @@ _objects.push(objectFive);
 _objects.push(objectSix);
 _objects.push(objectSeven);
 _objects.push(objectEight);
+_objects.push(objectNine);
+_objects.push(objectTen);
 
 export default {
   name: "portfolio",
@@ -154,8 +172,8 @@ export default {
       this.sectionTransition = true;
       this.sectionLocationPrevious = this.camera.position.x;
       this.sectionDelta = Math.abs(this.currentSectionIndex - index);
-      var hue = 220 + index * 20;
-      var hueOld = 220 + this.currentSectionIndex * 20;
+      var hue = 180 + index * 15;
+      var hueOld = 180 + this.currentSectionIndex * 15;
       console.log(hue, hueOld);
       this.planeColor = new THREE.Color("hsl(" + hueOld + ", 20%, 20%)");
       var newColorPlane = new THREE.Color("hsl(" + hue + ", 20%, 20%)");
@@ -462,7 +480,7 @@ export default {
       "./stuccoNormal.jpg"
     );
 
-    this.planeColor = new THREE.Color("hsl(" + 220 + ", 20%, 20%)");
+    this.planeColor = new THREE.Color("hsl(" + 180 + ", 20%, 20%)");
 
     texturePlaneNormal.wrapS = THREE.RepeatWrapping;
     texturePlaneNormal.wrapT = THREE.RepeatWrapping;

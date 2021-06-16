@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :style="[index > 6 ? 'position: fixed; left: 25%; width: 50%;' : '']">
     <transition name="fade">
       <div v-if="detailViewOpened">
         <div class="detail-view">
@@ -53,7 +53,7 @@
         Read more
       </div>
       <div
-        v-if="index > 0 && index < 7"
+        v-if="index > 0 && index < 9"
         class="text-button"
         @click="this.$emit('clicked', index + 1)"
         style="margin-left: 24px"
