@@ -14,8 +14,7 @@
         "hsl-to-hex": "^1.0.0",
         "three": "^0.129.0",
         "vue": "^3.0.0",
-        "core-js": "^3.6.5",
-        "serve": "^11.3.2",
+        "serve": "^11.3.2"
     },
     "devDependencies": {
         "@vue/cli-plugin-babel": "~4.5.0",
