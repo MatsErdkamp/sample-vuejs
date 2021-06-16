@@ -288,7 +288,7 @@ export default {
     // ALBUM PROFESSIONAL IDENTITY
     var texture2, material2, picturePlane2;
 
-    fetch(new Request("http://matserdkamp.com/api/recent/?limit=1&users=2"))
+    fetch(new Request("https://matserdkamp.com/api/recent/?limit=1&users=2"))
       .then(response => {
         return response.json();
       })
