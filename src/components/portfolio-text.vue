@@ -24,9 +24,11 @@
     <div v-if="object['subtitle'] != undefined" class="text-subtitle">
       {{ object["subtitle"] }}
     </div>
-    <div v-if="object['text'] != undefined" class="text-body">
-      {{ object["text"] }}
+    <div class="text-body">
+      <p v-if="object['text'] != undefined" >{{ object["text"] }}</p>
+      <p v-if="object['text_2'] != undefined" >{{ object["text_2"] }}</p>
     </div>
+
     <div class="text-buttons">
       <div
         v-if="index == 0"
@@ -51,7 +53,7 @@
         Read more
       </div>
       <div
-        v-if="index > 0"
+        v-if="index > 0 && index < 7"
         class="text-button"
         @click="this.$emit('clicked', index + 1)"
         style="margin-left: 24px"

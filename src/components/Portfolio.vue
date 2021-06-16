@@ -106,7 +106,9 @@ const objectSeven = {
 const objectEight = {
   title: "Future",
   text:
-    "I believe in a future where it is easier to interact with big data. Data-driven companies like Facebook and Google have created seemingly endless amounts of data. Most of this data however is obscured to the user. Somewhere in the back of a gigantic data center lies a solid state drive that might know you better than you know yourself. This data is highly valuable, yet we don’t give users a way to interface with it. I envision a future where people can easily access data, and have the best hardware to help them interface with said data. This ‘human-data interaction’ is something quite new. Big software companies have created the data, but hardware companies are not yet using it to its full potential. We have backends that can categorize music by emotion for example, but no hardware where one can input their current emotional state. Developing this future will create a new way of interaction. An indirect way to control digital systems. One where circumstances can lead to a better, more transparent, way of interacting with data."
+    "After graduating from high school, I did not only apply for Industrial Design. I also applied for Computer Science at the TU/e. When I tell people about this, they aren’t surprised in the slightest. Design projects closely related to Computer Science have been prevalent throughout all three years of my bachelor’s curriculum. Looking back, I am glad that I ultimately chose for Industrial Design. The creative freedom and self-directed learning possibilities within this study have been a great fit for me, and have played a huge role in my personal development.",
+  text_2:
+    "Funnily enough, I am once again facing the same dilemma I faced when I was fresh out of high school. Once again am I torn between Industrial Design and Computer Science (more specifically, Artificial Intelligence). I have always tried to utilize the best of both worlds in my projects, and my future vision very much combines design with A.I. systems. The world of Industrial Design seems to be waking up to artificial intelligence however, so mastering in Industrial Design with a focus on Artificial Intelligence might be the best fit for me, since that would still give me the creative freedom I valued so much during this bachelor. I am looking forward to the next steps in my design career, and I am excited to see how the applications of A.I in design are going to evolve in the future."
 };
 
 _objects.push(objectOne);
@@ -246,7 +248,6 @@ export default {
 
           object.traverse(function(child) {
             child.castShadow = true;
-            child.receiveShadow = true;
           });
           frameObject = object;
           scene.add(frameObject);
@@ -260,6 +261,11 @@ export default {
           newFrame2.position.x =
             planeWidthAtDistance * 2 - planeWidthAtDistance / 4 + 2;
           scene.add(newFrame2);
+
+          var newFrame5 = frameObject.clone();
+          newFrame5.position.x =
+            planeWidthAtDistance * 5 - planeWidthAtDistance / 4 + 2;
+          scene.add(newFrame5);
         },
         function(xhr) {},
         function(error) {
@@ -267,6 +273,15 @@ export default {
         }
       );
     });
+
+    const tickergeometry = new THREE.BoxGeometry(15, 30, 15);
+    const tickermaterial = new THREE.MeshStandardMaterial({ color: 0x808080 });
+
+    const tickerPillar = new THREE.Mesh(tickergeometry, tickermaterial);
+    tickerPillar.position.x =
+      planeWidthAtDistance * 4 - planeWidthAtDistance / 4 + 2;
+    tickerPillar.position.y = -20;
+    scene.add(tickerPillar);
 
     var texture, material, picturePlane;
 
@@ -284,6 +299,25 @@ export default {
     picturePlane.position.z = 0.6;
 
     scene.add(picturePlane);
+
+    //BYCLMC
+    var textureByclmc, materialByclmc, pictureByclmc;
+
+    textureByclmc = new THREE.TextureLoader().load("./byclmc.jpg");
+
+    materialByclmc = new THREE.MeshPhongMaterial({
+      map: textureByclmc,
+      reflectivity: 0.1,
+      shininess: 50
+    });
+    pictureByclmc = new THREE.Mesh(new THREE.PlaneGeometry(25, 25), materialByclmc);
+    pictureByclmc.material.side = THREE.DoubleSide;
+    pictureByclmc.position.x = planeWidthAtDistance * 5 - planeWidthAtDistance / 4 + 1;
+    pictureByclmc.position.y = 3;
+    pictureByclmc.position.z = 0.6;
+
+    scene.add(pictureByclmc);
+
 
     // ALBUM PROFESSIONAL IDENTITY
     var texture2, material2, picturePlane2;
