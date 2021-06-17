@@ -108,7 +108,11 @@ const objectFour = {
       title: "Conclusion & Lessons Learned",
       conclusion: true,
       text:
-        "conclusion ahah ah ah ah",
+        "The AUD_I/O project has been very interesting to me from start to finish. Out of all the project I have done throughout my bachelor, I am glad to say that this one is most in line with my professional identity and vision. It is also the first time I got to make a product that could actually be sold in the near future. This was very exciting to me, since my past projects all where designed for the far future (2050).",
+      text_2:
+        "Looking back at the design process, I think that there is one major lesson to take into account for future projects. Halfway through the project, the focus lied too much on the technical implementation, while the focus should have been on the user’s wants and needs. I got caught up in the technology, and lost sight of what was truly important for the project. Luckily, I was able to incorporate the user’s feedback into the project at a later stage. And, of course, the user was right, and it made the project way more compelling. ",
+      text_3:
+        "I am very proud of the results, multiple people show genuine interest in the system, and that is honestly all we can ask for as designers. A lot of lessons have been learned, and my vision of the future has been cemented even more. If I had to start a company now, it would definitely be closely related to further developing the core opportunities that have arisen in this project. ",
     }
   ]
 };
@@ -123,7 +127,7 @@ const objectFive = {
 
 const objectSix = {
   title: "B.Y.C.L.M.C",
-  read_more: true,
+  read_more: false,
   subtitle: "Design Project",
   text:
     "‘Baby You Can Locate My Car’ explores the ethical considerations that need to be made for the future of mobility. Created with Rijkswaterstaat, B.Y.C.L.M.C. tries to communicate future privacy concerns that might arise through the adoption of ACES (autonomous, connected, electric & shared) vehicles. A digital demo was made where users need to make moral decisions. Should your spouse be able to monitor your car’s location? What about your employer? Would you monitor your child’s location to be sure of their safety? These kinds of dilemmas are proposed to the user in an effort to spark a discussion.",
@@ -373,6 +377,7 @@ export default {
       planeWidthAtDistance * 2 - planeWidthAtDistance / 4 + 10;
     speakerPillar.position.y = -20;
     speakerPillar.position.z = 10;
+    speakerPillar.castShadow = true;
     scene.add(speakerPillar);
 
     var speakerLoader = new OBJLoader();
@@ -400,6 +405,52 @@ export default {
         console.log(error);
       }
     );
+
+    //BREAKMAN
+
+    const breakmangeometry = new THREE.BoxGeometry(10, 30, 10);
+    const breakmanmaterial = new THREE.MeshPhongMaterial({ color: 0xd6d6d6 });
+    const breakmanmaterial2 = new THREE.MeshPhongMaterial({
+      color: 0x875632,
+      reflectivity: 0.1,
+      shininess: 16
+    });
+
+    const breakmanPillar = new THREE.Mesh(breakmangeometry, breakmanmaterial);
+    breakmanPillar.position.x =
+      planeWidthAtDistance * 6 - planeWidthAtDistance / 4 + 10;
+    breakmanPillar.position.y = -20;
+    breakmanPillar.position.z = 10;
+    breakmanPillar.castShadow = true;
+    scene.add(breakmanPillar);
+
+    var breakmanLoader = new OBJLoader();
+
+    breakmanLoader.load(
+      "./breakman/BREAKMAN.obj",
+      function(object) {
+        object.scale.set(0.7,0.7,0.7);
+        object.rotation.set(3.14, -1.8, 1.57);
+        object.position.x =
+          planeWidthAtDistance * 6 - planeWidthAtDistance / 4 + 10;
+        object.position.y = -1.2;
+        object.position.z = 10;
+
+        object.traverse(function(child) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+          child.material = breakmanmaterial2;
+        });
+
+        scene.add(object);
+      },
+      function(xhr) {},
+      function(error) {
+        console.log(error);
+      }
+    );
+
+
 
     var texture, material, picturePlane;
 

@@ -18,6 +18,8 @@
         {{ snippet.title }}
       </div>
       <p class="snippet-text-center">{{ snippet.text }}</p>
+      <p v-if="snippet.text_2 != undefined" class="snippet-text-center">{{ snippet.text_2 }}</p>
+      <p v-if="snippet.text_3 != undefined" class="snippet-text-center">{{ snippet.text_3 }}</p>
     </div>
   </div>
 </template>
@@ -64,6 +66,7 @@ export default {
   font-size: 2.4em;
   font-weight: 500;
   line-height: 1.4;
+
   margin-bottom: 12px;
   text-align: center;
 }
@@ -80,7 +83,9 @@ export default {
 .snippet-text-center {
   font-size: 1em;
   display: block;
-  width: 100%;
+  width: 50%;
+  margin: auto;
+  text-align: justify;
 }
 
 .snippet-image {
