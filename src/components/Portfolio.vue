@@ -61,8 +61,13 @@ const objectTwo = {
   title: "Identity",
   read_more: false,
   text:
-    "Whenever new technologies emerge, I instantly become excited. From artificial intelligence to blockchains, I am always eager to learn about the inner workings of such complex technologies. Breakthrough technologies often create a plethora of new hidden opportunities. This is exciting to me as a designer, since it is up to us to uncover these hidden opportunities. This love for future technologies has had major influence on my curriculum. The DIGSIM squad, Smart and the City, Transformative Practices and USE: Robots to name a few, are all very much linked to me as a designer, and have helped me cement my vision of the future, and the role I want to have in it. A good designer does not only find hypothetical applications for new technologies however. They should also then be able to apply that knowledge and manifest it into a product. Teammates have often praised me for my technology and realization skillset, as evidenced by me often being delegated to ‘CTO’ within projects.  \
-    This technology focus is a double-edged sword for me, since it can make me lose track of what is ultimately most important: the user (and society). Design is shaped by the users, and it is therefore crucial that their needs are considered, not only at the end, but throughout the entire design process. This is not always easy for me. I can get lost in cutting-edge part of a design, without considering if the user ultimately benefits. As someone who wants to bridge the gap between emerging technologies and new markets, I strive to become better at involving users during the product design. One of the benefits of designing in emerging markets, is that a good idea often immediately becomes a good business idea. I have always had an entrepreneurial spirit within me, and I hope to one day start my own company. To do this entrepreneurial spirit justice, I aim to better analyze the business side of future projects."
+    "Whenever new technologies emerge, I instantly become excited. From artificial intelligence to blockchains, I am always eager to learn about the inner workings of such complex technologies. Breakthrough technologies often create a plethora of new hidden opportunities. This is exciting to me as a designer, since it is up to us to uncover these hidden opportunities. My strength lies in having a deeper understanding of these technologies compared to the average designer. This love for future technologies has had major influence on my curriculum. The DIGSIM squad, Smart and the City, Transformative Practices and USE: Robots to name a few, are all very much linked to me as a designer, and have helped me cement my vision of the future, and the role I want to have in it. ",
+  text_2:
+    "A good designer does not only find hypothetical applications for new technologies however. They should also then be able to apply that knowledge and manifest it into a product. Teammates have often praised me for my technology and realization skillset, as evidenced by me often being delegated to ‘CTO’ within projects. I like to think of myself as being on the edge of Industrial Design and Computer Science, this is further evidenced by the technical nature all my past projects have had.",
+  text_3:
+    "If something new excites me, I can become quite obsessed with it. These obsessive explorations have given me the mental stamina to work extremely hard for certain periods of time. The downside is that this does result in other days where my output is slightly decreased. Through self-directed learning I am able to very quickly teach myself all there is to know about this new topic. This quick learning helps me be very agile during the ideation and conceptualization phases of a design.",
+  text_4:
+    "Most of my own design explorations have been focused on novel interactions with music. As evidenced by some of the projects in this portfolio, there is a huge opportunity to make music interactions more natural and fun. One thing that interests me greatly in this area is the social bonding and personality judgement that can happen through music. To exemplify this, the image on the left shows my most recently streamed album."
 };
 const objectThree = {
   title: "Vision",
@@ -112,7 +117,7 @@ const objectFour = {
       text_2:
         "Looking back at the design process, I think that there is one major lesson to take into account for future projects. Halfway through the project, the focus lied too much on the technical implementation, while the focus should have been on the user’s wants and needs. I got caught up in the technology, and lost sight of what was truly important for the project. Luckily, I was able to incorporate the user’s feedback into the project at a later stage. And, of course, the user was right, and it made the project way more compelling. ",
       text_3:
-        "I am very proud of the results, multiple people show genuine interest in the system, and that is honestly all we can ask for as designers. A lot of lessons have been learned, and my vision of the future has been cemented even more. If I had to start a company now, it would definitely be closely related to further developing the core opportunities that have arisen in this project. ",
+        "I am very proud of the results, multiple people show genuine interest in the system, and that is honestly all we can ask for as designers. A lot of lessons have been learned, and my vision of the future has been cemented even more. If I had to start a company now, it would definitely be closely related to further developing the core opportunities that have arisen in this project. "
     }
   ]
 };
@@ -180,10 +185,15 @@ const objectEight = {
 
 const objectNine = {
   title: "Personal Development",
+  read_more: true,
   text:
-    "After graduating from high school, I did not only apply for Industrial Design. I also applied for Computer Science at the TU/e. When I tell people about this, they aren’t surprised in the slightest. Design projects closely related to Computer Science have been prevalent throughout all three years of my bachelor’s curriculum. Looking back, I am glad that I ultimately chose for Industrial Design. The creative freedom and self-directed learning possibilities within this study have been a great fit for me, and have played a huge role in my personal development.",
-  text_2:
-    "Funnily enough, I am once again facing the same dilemma I faced when I was fresh out of high school. Once again am I torn between Industrial Design and Computer Science (more specifically, Artificial Intelligence). I have always tried to utilize the best of both worlds in my projects, and my future vision very much combines design with A.I. systems. The world of Industrial Design seems to be waking up to artificial intelligence however, so mastering in Industrial Design with a focus on Artificial Intelligence might be the best fit for me, since that would still give me the creative freedom I valued so much during this bachelor. I am looking forward to the next steps in my design career, and I am excited to see how the applications of A.I in design are going to evolve in the future."
+    "Comparing myself to who I was three years ago, I certainly evolved as a designer in some pretty major ways. This section describes some of my personal strenghts in the different expertise areas, as well as being pretty self-critical of who I am today. These critiques serve as the basis on which I can start further developing myself for the next three years, and I am already looking forward to overcoming the eventual shortcomings that will arise years later.",
+  snippets: [
+    {
+      title: null,
+      conclusion: true
+    }
+  ]
 };
 
 const objectTen = {
@@ -429,7 +439,7 @@ export default {
     breakmanLoader.load(
       "./breakman/BREAKMAN.obj",
       function(object) {
-        object.scale.set(0.7,0.7,0.7);
+        object.scale.set(0.7, 0.7, 0.7);
         object.rotation.set(3.14, -1.8, 1.57);
         object.position.x =
           planeWidthAtDistance * 6 - planeWidthAtDistance / 4 + 10;
@@ -449,8 +459,6 @@ export default {
         console.log(error);
       }
     );
-
-
 
     var texture, material, picturePlane;
 
@@ -512,6 +520,30 @@ export default {
     pictureByclmc.position.z = 0.6;
 
     scene.add(pictureByclmc);
+
+
+    //TICKER
+    var textureTicker, materialTicker, pictureTicker;
+
+    textureTicker = new THREE.TextureLoader().load("./ticker.png");
+
+    materialTicker = new THREE.MeshPhongMaterial({
+      map: textureTicker,
+      reflectivity: 0.1,
+      shininess: 50
+    });
+    pictureTicker = new THREE.Mesh(
+      new THREE.PlaneGeometry(25, 25),
+      materialTicker
+    );
+    pictureTicker.material.side = THREE.DoubleSide;
+    pictureTicker.position.x =
+      planeWidthAtDistance * 4 - planeWidthAtDistance / 4 + 1;
+    pictureTicker.position.y = 3;
+    pictureTicker.position.z = 0.6;
+
+    scene.add(pictureTicker);
+
 
     // ALBUM PROFESSIONAL IDENTITY
     var texture2, material2, picturePlane2;

@@ -29,6 +29,8 @@
     <div class="text-body">
       <p v-if="object['text'] != undefined">{{ object["text"] }}</p>
       <p v-if="object['text_2'] != undefined">{{ object["text_2"] }}</p>
+      <p v-if="object['text_3'] != undefined">{{ object["text_3"] }}</p>
+      <p v-if="object['text_4'] != undefined">{{ object["text_4"] }}</p>
     </div>
 
     <div class="text-buttons">
