@@ -4,10 +4,10 @@
       <div v-if="detailViewOpened">
         <div class="detail-view">
           <div class="detail-view-title">{{ object["title"] }}</div>
-          <div :key="snippet" v-for="snippet in details">
-            <detail-snippet />
+          <detail-video :index="index" />
+          <div :key="snippet" v-for="snippet in object.snippets">
+            <detail-snippet :snippet="snippet" />
           </div>
-          <detail-video />
         </div>
         <div class="detail-view-close">
           <img
@@ -20,13 +20,15 @@
       </div>
     </transition>
 
-    <div class="text-title" :class="{ name: index == 0 }">{{ object["title"] }}</div>
+    <div class="text-title" :class="{ name: index == 0 }">
+      {{ object["title"] }}
+    </div>
     <div v-if="object['subtitle'] != undefined" class="text-subtitle">
       {{ object["subtitle"] }}
     </div>
     <div class="text-body">
-      <p v-if="object['text'] != undefined" >{{ object["text"] }}</p>
-      <p v-if="object['text_2'] != undefined" >{{ object["text_2"] }}</p>
+      <p v-if="object['text'] != undefined">{{ object["text"] }}</p>
+      <p v-if="object['text_2'] != undefined">{{ object["text_2"] }}</p>
     </div>
 
     <div class="text-buttons">
@@ -79,7 +81,6 @@ export default {
   data: function() {
     return {
       detailViewOpened: false,
-      details: [0, 1, 2, 3, 4]
     };
   },
   watch: {
@@ -91,17 +92,16 @@ export default {
 </script>
 
 <style>
-
 .name {
   font-size: 6em !important;
 }
 
 .detail-view {
-  z-index: 10000;
   overflow-y: scroll;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 200;
   min-width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
@@ -117,7 +117,7 @@ export default {
 
 .detail-view-close {
   z-index: 999999;
-  position: absolute;
+  position: fixed;
   right: 64px;
   top: 48px;
 }

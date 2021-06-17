@@ -4,7 +4,7 @@
       <div v-if="loading == true" class="portfolio-loading">Loading...</div>
     </transition>
 
-    <div class="portfolio-navigation">
+    <div v-show="detailViewOpen == false" class="portfolio-navigation">
       <div :key="tab['title']" v-for="(tab, index) in objects">
         <div
           class="navigation-tab-child"
@@ -68,7 +68,9 @@ const objectThree = {
   title: "Vision",
   read_more: false,
   text:
-    "I believe in a future where it is easier to interact with big data. Data-driven companies like Facebook and Google have created seemingly endless amounts of data. Most of this data however is obscured to the user. Somewhere in the back of a gigantic data center lies a solid state drive that might know you better than you know yourself. This data is highly valuable, yet we don’t give users a way to interface with it. I envision a future where people can easily access data, and have the best hardware to help them interface with said data. This ‘human-data interaction’ is something quite new. Big software companies have created the data, but hardware companies are not yet using it to its full potential. We have backends that can categorize music by emotion for example, but no hardware where one can input their current emotional state. Developing this future will create a new way of interaction. An indirect way to control digital systems. One where circumstances can lead to a better, more transparent, way of interacting with data."
+    "I believe in a future where it is easier to interact with big data. Data-driven companies like Facebook and Google have created seemingly endless amounts of data. Most of this data however is obscured to the user. Somewhere in the back of a gigantic data center lies a solid state drive that might know you better than you know yourself. This data is highly valuable, yet we don’t give users a way to interface with it. I envision a future where people can easily access data, and have the best hardware to help them interface with said data. This ‘human-data interaction’ is something quite new. Big software companies have created the data, but hardware companies are not yet using it to its full potential. We have backends that can categorize music by emotion for example, but no hardware where one can input their current emotional state. Developing this future will create a new way of interaction. An indirect way to control digital systems. One where circumstances can lead to a better, more transparent, way of interacting with data.",
+  text_2:
+    "One of the areas where I feel that these new interactions with data can be really helpful is in the context of music controls. Music is inherently emotional and social, so why not better reflect that in the controls? If I had to start a company today, this would be the context I would design for. Pictured on the left is a speaker I've been designing that captures part of my vision of the future."
 };
 
 const objectFour = {
@@ -76,7 +78,39 @@ const objectFour = {
   read_more: true,
   subtitle: "Final Bachelor Project",
   text:
-    "Car music control systems have traditionally been designed for the radio. Music streaming services often feel like an afterthought in car interfaces. The AUD_I/O project redesigns music interactions from the ground up with streaming, big data, and future mobility in mind. This fundamentally different design basis resulted in new and innovative interactions. Music recommendations are augmented by journey data, such as location, speed, road type, E.T.A., and many more. Furthermore, passengers can easiliy couple to the car's music listening session, creating a more social environment where everybody can enjoy the music. This social aspect is not limited to within the car. The AUD_I/O system even provides the opportunity to send music between cars, while waiting for the traffic light to turn green, for example."
+    "Car music control systems have traditionally been designed for the radio. Music streaming services often feel like an afterthought in car interfaces. The AUD_I/O project redesigns music interactions from the ground up with streaming, big data, and future mobility in mind. This fundamentally different design basis resulted in new and innovative interactions. Music recommendations are augmented by journey data, such as location, speed, road type, E.T.A., and many more. Furthermore, passengers can easiliy couple to the car's music listening session, creating a more social environment where everybody can enjoy the music. This social aspect is not limited to within the car. The AUD_I/O system even provides the opportunity to send music between cars, while waiting for the traffic light to turn green, for example.",
+  snippets: [
+    {
+      title: "Smart Suggestions",
+      text:
+        "The AUD_I/O system uses the car’s sensor data to augment the songs suggested. Variables such as speed, traffic, weather, estimated time of arrival, and more all play a role in the creation of suggestions. This sensor data is also used for the creation of special playlists on a per trip basis. In the example shown, a playlist has been generated for Mats and Pieter. The recommendation engine knows that it is a sunny day, and that most of the trip will be on the highway. This influences the songs that are suggested, creating a fresh and fitting music experience.",
+      image: "./smartSuggestion.png"
+    },
+    {
+      title: "Social Controls",
+      text:
+        "Passengers can easily couple to the car’s music listening session, once coupled, the system provides an interface where users can negotiate how much influence their music taste has on the smart recommendation system. By moving the slider, driver and passenger can choose whose music taste is more prevalent. A small set of artists is shown to give a glimpse of what kind of music the current slider setting would provide.",
+      image: "./socialControls.png"
+    },
+    {
+      title: "Interface",
+      text:
+        "An interface has been made to make the navigation of the smart suggestions as easy and intuitive as possible. A horizontally scrolling menu makes it easy to see the recommendations at a glance. The suggested albums include special information, such as ‘new release’,  ‘finishable before arrival’ & ‘grammy winner’. This information aims to make choosing an album to listen even quicker and easier.",
+      image: "./interface.png"
+    },
+    {
+      title: "Input Device",
+      text:
+        "To aid the use of the digital interface, a control knob has been designed to navigate the menu in an intuitive way. The knob also includes a display, allowing for some of the interactions to still take place, even when the infotainment system does currently not have the music control interface open.",
+      image: "./knob.png"
+    },
+    {
+      title: "Conclusion & Lessons Learned",
+      conclusion: true,
+      text:
+        "conclusion ahah ah ah ah",
+    }
+  ]
 };
 
 const objectFive = {
@@ -92,7 +126,9 @@ const objectSix = {
   read_more: true,
   subtitle: "Design Project",
   text:
-    "I believe in a future where it is easier to interact with big data. Data-driven companies like Facebook and Google have created seemingly endless amounts of data. Most of this data however is obscured to the user. Somewhere in the back of a gigantic data center lies a solid state drive that might know you better than you know yourself. This data is highly valuable, yet we don’t give users a way to interface with it. I envision a future where people can easily access data, and have the best hardware to help them interface with said data. This ‘human-data interaction’ is something quite new. Big software companies have created the data, but hardware companies are not yet using it to its full potential. We have backends that can categorize music by emotion for example, but no hardware where one can input their current emotional state. Developing this future will create a new way of interaction. An indirect way to control digital systems. One where circumstances can lead to a better, more transparent, way of interacting with data."
+    "‘Baby You Can Locate My Car’ explores the ethical considerations that need to be made for the future of mobility. Created with Rijkswaterstaat, B.Y.C.L.M.C. tries to communicate future privacy concerns that might arise through the adoption of ACES (autonomous, connected, electric & shared) vehicles. A digital demo was made where users need to make moral decisions. Should your spouse be able to monitor your car’s location? What about your employer? Would you monitor your child’s location to be sure of their safety? These kinds of dilemmas are proposed to the user in an effort to spark a discussion.",
+  text_2:
+    "Data privacy is a difficult topic, and it seems that with the smartphone etc. we were all too late with discussing it, resulting in regulation playing catch-up to the likes of Facebook, Google, etc. B.Y.C.L.M.C. tries to prevent this from happening again, by sparking up the conversation well before the implementation of such systems."
 };
 
 const objectSeven = {
@@ -100,15 +136,42 @@ const objectSeven = {
   read_more: false,
   subtitle: "Sensors for Physiology",
   text:
-    "I believe in a future where it is easier to interact with big data. Data-driven companies like Facebook and Google have created seemingly endless amounts of data. Most of this data however is obscured to the user. Somewhere in the back of a gigantic data center lies a solid state drive that might know you better than you know yourself. This data is highly valuable, yet we don’t give users a way to interface with it. I envision a future where people can easily access data, and have the best hardware to help them interface with said data. This ‘human-data interaction’ is something quite new. Big software companies have created the data, but hardware companies are not yet using it to its full potential. We have backends that can categorize music by emotion for example, but no hardware where one can input their current emotional state. Developing this future will create a new way of interaction. An indirect way to control digital systems. One where circumstances can lead to a better, more transparent, way of interacting with data."
+    "The Breakman project combines music control with physiology. Its main goal is to stimulate taking breaks during work. This was especially relevant during its inception, when everyone was sitting at home due to COVID-19. The Breakman plays music with different levels of energy to subconsciously let users stick to the pomodoro technique, a time management tool to optimize productivity (25min work + 5min break). ",
+  text_2:
+    "This goal was achieved through the use of a heart rate sensor. Heart rate data is used to see which songs actually get the user to stand up and become more active. A database keeps track of the songs that generally perform well, creating a self-learning system that becomes smarter and smarter."
 };
 
 const objectEight = {
   title: "Other Projects",
+  read_more: true,
   text:
-    "After graduating from high school, I did not only apply for Industrial Design. I also applied for Computer Science at the TU/e. When I tell people about this, they aren’t surprised in the slightest. Design projects closely related to Computer Science have been prevalent throughout all three years of my bachelor’s curriculum. Looking back, I am glad that I ultimately chose for Industrial Design. The creative freedom and self-directed learning possibilities within this study have been a great fit for me, and have played a huge role in my personal development.",
-  text_2:
-    "Funnily enough, I am once again facing the same dilemma I faced when I was fresh out of high school. Once again am I torn between Industrial Design and Computer Science (more specifically, Artificial Intelligence). I have always tried to utilize the best of both worlds in my projects, and my future vision very much combines design with A.I. systems. The world of Industrial Design seems to be waking up to artificial intelligence however, so mastering in Industrial Design with a focus on Artificial Intelligence might be the best fit for me, since that would still give me the creative freedom I valued so much during this bachelor. I am looking forward to the next steps in my design career, and I am excited to see how the applications of A.I in design are going to evolve in the future."
+    "Some of my past designs are not as relevant to my vision, but they have still been crucial in the development of my identity and skillset. This section briefly highlights these projects, and the lessons I learned from them. They helped me in becoming the designer I am today. Lessons learned include a newfound love for physical interactions, improvement of my Computer Science skills, and a better grasp of business analysis.",
+  snippets: [
+    {
+      title: "Aesthetics of Interaction",
+      text:
+        "The course aesthetics of interaction helped me develop my newfound love for physical interactions. I used to be very focused on digital interactions, but this course opened up my eyes to the beauty physical interactions can bring. ",
+      text_2:
+        "For the project we made an alarm clock for André Rieu and his orchestra. Sections of the orchestra all have their own figure in mister Rieu’s clock. Mister Rieu’s alarm starts of as a sole violin playing the melody. Once, for example, the trumpetists are awake, their instrument gets added to the alarm tune. Once the whole orchestra is awake, the classical music piece plays in full, with all the instruments in the mix.",
+      image: "./aesthetics.png"
+    },
+    {
+      title: "Computer Graphics & Game Design",
+      text:
+        "The courses Computer Graphics and Game Design gave helped me develop my skills as a programmer. More specifically, they made me more capable in 3D-modeling and rendering scenes. This portfolio website would note have been possible if I had not taken those two courses. Pictured on the left is a carousel coded in OpenGL. A lot of vector math was required to calulate the surfaces and lighting.",
+      text_2:
+        "Computer Graphics is actually an Applied Mathematics / Computer Science course. I applied for the course to challenge myself. Industrial Design is hard work, but has not always been challenging for me from an intellectual standpoint. Taking this math-based course was a nice change of pace, and definitely a challenge. I ultimately completed the course with a 9, and it helped me overcome the feeling that I wouldn’t be able to master in Artificial Intelligence.",
+      image: "./computerGraphics.png"
+    },
+    {
+      title: "Design Innovation Methods",
+      text:
+        "Through the course Design Innovation Methods I was able to improve my business and entrepreneurship skillset. Business and entrepreneurship has been in my opinion the most difficult to properly include in a design project. Two of my past projects have been speculative design artefacts, and the did not have a traditional commercial use case. This course allowed me to analyze actually commercially viable products. I have learned a great deal, but also know that I have a long way to go if I want to start a business for myself.",
+      text_2:
+        "Ultimately, I think that a lot of this learning is best done by actually trying to sell something. That is why I have been designing speakers (as seen under ‘vision’). I would love to turn my vision into a concrete idea for a startup, and I am working hard on realizing that future.",
+      image: "./dim.png"
+    }
+  ]
 };
 
 const objectNine = {
@@ -166,7 +229,6 @@ export default {
   methods: {
     detailViewHandler: function(val) {
       this.detailViewOpen = val;
-      console.log(this.detailViewOpen);
     },
     moveToSection: function(index) {
       this.sectionTransition = true;
@@ -174,13 +236,11 @@ export default {
       this.sectionDelta = Math.abs(this.currentSectionIndex - index);
       var hue = 220 + index * 15;
       var hueOld = 220 + this.currentSectionIndex * 15;
-      console.log(hue, hueOld);
       this.planeColor = new THREE.Color("hsl(" + hueOld + ", 20%, 20%)");
       var newColorPlane = new THREE.Color("hsl(" + hue + ", 20%, 20%)");
       this.newPlaneColor = newColorPlane;
       this.currentSectionIndex = index;
       this.destinationCameraPos = index * this.planeWidthAtDistance;
-      console.log("moving camera to " + this.destinationCameraPos);
     },
     lerp: function(amt, x, y, plane) {
       var adjusted_amt = amt / Math.sqrt(this.sectionDelta);

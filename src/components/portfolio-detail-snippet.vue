@@ -1,27 +1,52 @@
 <template>
-  <div class="snippet-parent">
-    <img class="snippet-image" src="" alt="" />
-    <div class="snippet-text-parent">
-      <div class="snippet-title">title</div>
-      <div class="snippet-subtitle">subtitle</div>
-      <div class="snippet-text">
-        text and more text and more a lot of text text text text should be a lot
-        I guess
+  <div>
+    <div class="snippet-parent" v-if="snippet.conclusion == undefined">
+      <img class="snippet-image" v-bind:src="findSource()" />
+      <div class="snippet-text-parent">
+        <div class="snippet-title">{{ snippet.title }}</div>
+
+        <div class="snippet-text">
+          <p>{{ snippet.text }}</p>
+          <p v-if="snippet.text_2 != undefined">
+            {{ snippet.text_2 }}
+          </p>
+        </div>
       </div>
+    </div>
+    <div class="snippet-parent-center" v-else>
+      <div class="snippet-title-center">
+        {{ snippet.title }}
+      </div>
+      <p class="snippet-text-center">{{ snippet.text }}</p>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["snippet"],
+  methods: {
+    findSource: function() {
+      var string = this.snippet.image;
+
+      return string;
+    }
+  }
+};
 </script>
 
 <style>
 .snippet-parent {
   display: flex;
   margin: 20px;
-  width: 100%;
+  min-width: 100%;
   align-items: center;
+}
+
+.snippet-parent-center {
+  margin-top: 48px;
+  min-width: 100%;
+  text-align: center;
 }
 
 .snippet-text-parent {
@@ -31,7 +56,16 @@ export default {};
 .snippet-title {
   font-size: 2.4em;
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.snippet-title-center {
+  font-size: 2.4em;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  text-align: center;
 }
 
 .snippet-subtitle {
@@ -43,7 +77,14 @@ export default {};
   font-size: 1em;
 }
 
+.snippet-text-center {
+  font-size: 1em;
+  display: block;
+  width: 100%;
+}
+
 .snippet-image {
+  border-radius: 4px;
   width: 20vw;
   background: grey;
   height: 20vw;

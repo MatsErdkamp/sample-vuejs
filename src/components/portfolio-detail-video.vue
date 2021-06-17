@@ -1,23 +1,42 @@
 <template>
-  <div class="snippet-video-parent">
-    video 
+  <div v-if="this.index == 3" class="snippet-video-parent">
+    <iframe
+      :src="getSource()"
+      width="720"
+      height="480"
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen
+    ></iframe>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data: function() {
+    return {
+      videoAvailable: false
+    };
+  },
+  props: ["object", "index"],
+  methods: {
+    getSource: function() {
+      
+
+
+
+      return "https://player.vimeo.com/video/557989484";
+    }
+  }
+};
 </script>
 
 <style>
 .snippet-video-parent {
   display: flex;
-  margin: 20px;
+  justify-content: center;
   width: 100%;
-  height: 200px;
   align-items: center;
-  background: red;
-
+  margin-bottom: 64px;
 }
-
-
 </style>
