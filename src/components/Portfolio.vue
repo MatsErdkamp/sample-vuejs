@@ -318,7 +318,7 @@ export default {
     var speakerLoader = new OBJLoader();
 
     speakerLoader.load(
-      "./speaker/speaker3.obj",
+      "./speaker/Speaker3.obj",
       function(object) {
         object.scale.set(10, 10, 10);
         object.rotation.set(0, 5, 0);
